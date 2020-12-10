@@ -47,17 +47,18 @@
 module.exports = {
   service1: {
     api: ['/tours/requests', '/tours/agents'],
-    url: 'http://localhost:3001',
+    url: 'http://localhost:3002',
     bundle: 'bundle.js',
   },
   service2: {
     api: ['/similar-homes', '/similar-homes/favorites', '/new-listings', '/new-listing/favorites'],
-    url: 'http://52.15.94.24:3001/',
+    url: 'http://localhost:3003',
     bundle: 'bundle.js',
   },
+  // Photos microservice
   service3: {
-    api: '/listings/:id',
-    url: 'http://54.219.143.193:3001/',
+    api: ['/listings/:id', '/addListing'],
+    url: '172.31.27.218:3001',
     bundle: 'bundle.js',
   },
   service4: {

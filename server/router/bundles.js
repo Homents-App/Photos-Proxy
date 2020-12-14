@@ -5,7 +5,7 @@ const {
 } = require('../config/services.js');
 
 const router = Router();
-
+/*
 router.use('/service1.js', createProxyMiddleware({
   target: service1.url,
   pathRewrite: {
@@ -21,7 +21,7 @@ router.use('/service2.js', createProxyMiddleware({
   },
   changeOrigin: true,
 }));
-
+*/
 router.use('/service3.js', createProxyMiddleware({
   target: service3.url,
   pathRewrite: {
@@ -29,7 +29,7 @@ router.use('/service3.js', createProxyMiddleware({
   },
   changeOrigin: true,
 }));
-
+/*
 router.use('/service4.js', createProxyMiddleware({
   target: service4.url,
   pathRewrite: {
@@ -37,5 +37,5 @@ router.use('/service4.js', createProxyMiddleware({
   },
   changeOrigin: true,
 }));
-
+*/
 module.exports = router;

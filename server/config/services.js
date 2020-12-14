@@ -45,7 +45,7 @@
 */
 
 module.exports = {
-  service1: {
+   service1: {
     api: ['/tours/requests', '/tours/agents'],
     url: 'http://localhost:3002',
     bundle: 'bundle.js',
@@ -55,12 +55,15 @@ module.exports = {
     url: 'http://localhost:3003',
     bundle: 'bundle.js',
   },
+
   // Photos microservice
   service3: {
-    api: ['/listings/:id', '/addListing'],
-    url: '172.31.27.218:3001',
+    api: ['/listings/:id', '/listings', '/addListing'],
+   // url: 'http://172.31.27.218:3001',
+    url: 'http://34.228.222.217', // IP for load balancer
     bundle: 'bundle.js',
   },
+
   service4: {
     api: '/home-description',
     url: 'http://localhost:3004',

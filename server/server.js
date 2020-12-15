@@ -14,15 +14,19 @@ app.get('/loaderio-da775ca393b463698d924dd5f047a5aa.txt', (req, res) => {
 	res.sendFile(path.join(__dirname, '../loaderio.txt'));
 })
 
-
 // Middleware to catch any IDs that are in the Redis cache
 app.use('/api', (req, res, next) => {
 	let url = req.url;
 	let split = url.split('/');
-	console.log('split', split);
-
-	console.log('req middleware: ', req.url);
-	next();
+	let id = split[split.length-1]
+	client.exists(id, (err, reply) => {
+		if (reply === 1) {
+			console.log('Redis cached')
+			res.send(client.get(id));
+		} else {
+			next();
+		}
+	})
 })
 
 // app.get('/listings/:id', (req, res) => {

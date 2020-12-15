@@ -60,7 +60,7 @@ module.exports = {
   service3: {
     api: ['/listings/:id', '/listings', '/addListing'],
    // url: 'http://172.31.27.218:3001',
-    url: 'http://34.228.222.217', // IP for load balancer
+    url: 'http://172.31.39.34', // IP for load balancer
     bundle: 'bundle.js',
   },
 

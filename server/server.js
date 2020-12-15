@@ -14,6 +14,11 @@ app.get('/loaderio-da775ca393b463698d924dd5f047a5aa.txt', (req, res) => {
 	res.sendFile(path.join(__dirname, '../loaderio.txt'));
 })
 
+app.get('/homes/:id', (req, res) => {
+  console.log('here')
+  res.sendFile(path.resolve('public', 'index.html'))
+});
+
 // Middleware to catch any IDs that are in the Redis cache
 app.use((req, res, next) => {
 	console.log('req middleware: ', req.body);

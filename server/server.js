@@ -19,7 +19,7 @@ app.use('/api', (req, res, next) => {
 	let url = req.url;
 	let split = url.split('/');
 	let id = split[split.length-1]
-	console.log('middleware', id, typeof(id));
+
 	client.exists(id, (err, reply) => {
 		if (reply === 1) {
 			console.log('Pulling from Redis cache')

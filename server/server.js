@@ -16,7 +16,11 @@ app.get('/loaderio-da775ca393b463698d924dd5f047a5aa.txt', (req, res) => {
 
 
 // Middleware to catch any IDs that are in the Redis cache
-app.use((req, res, next) => {
+app.use('/api', (req, res, next) => {
+	let url = req.url;
+	let split = url.split('/');
+	console.log('split', split);
+
 	console.log('req middleware: ', req.url);
 	next();
 })

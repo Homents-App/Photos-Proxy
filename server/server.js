@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const router = require('./router');
-const client = require('./router/')
+const client = require('./router/redis.js')
 
 const PUBLIC_DIR = path.resolve(__dirname, '..', 'public');
 const app = express();

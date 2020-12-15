@@ -23,7 +23,10 @@ app.use('/api', (req, res, next) => {
 	client.exists(id, (err, reply) => {
 		if (reply === 1) {
 			console.log('Redis cached')
-			res.send(client.get(id));
+			client.get(id, (err, reply) => {
+				if (err) {console.log(err)}
+				res.send(reply);
+			})
 		} else {
 			next();
 		}

@@ -14,10 +14,6 @@ app.get('/loaderio-da775ca393b463698d924dd5f047a5aa.txt', (req, res) => {
 	res.sendFile(path.join(__dirname, '../loaderio.txt'));
 })
 
-app.get('/listings/:id', (req, res) => {
-  console.log('here')
-  res.sendFile(path.resolve('public', 'index.html'))
-});
 
 // Middleware to catch any IDs that are in the Redis cache
 app.use((req, res, next) => {
@@ -27,6 +23,13 @@ app.use((req, res, next) => {
 
 // Handling asset requests for webpack bundles by passing off requests to the bundles router
 app.use('/bundles', router.bundles);
+
+
+app.get('/listings/:id', (req, res) => {
+	console.log('here')
+	res.sendFile(path.resolve('public', 'index.html'))
+});
+
 // Handling AJAX requests to the API by passing off requests to the api router
 app.use('/api', router.api);
 

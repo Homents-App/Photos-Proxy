@@ -10,7 +10,7 @@ const app = express();
 app.use(morgan('tiny'));
 app.use(express.static(PUBLIC_DIR));
 
-app.get('/loaderio-da775ca393b463698d924dd5f047a5aa.txt', (req, res) => {
+app.get('/loaderio-05967b6037262898ba14faf165b6010e.txt', (req, res) => {
 	res.sendFile(path.join(__dirname, '../loaderio.txt'));
 })
 

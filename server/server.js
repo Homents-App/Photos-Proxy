@@ -7,7 +7,7 @@ const client = require('./router/redis.js')
 const PUBLIC_DIR = path.resolve(__dirname, '..', 'public');
 const app = express();
 
-app.use(morgan('dev'));
+app.use(morgan('tiny'));
 app.use(express.static(PUBLIC_DIR));
 
 app.get('/loaderio-da775ca393b463698d924dd5f047a5aa.txt', (req, res) => {
@@ -19,13 +19,13 @@ app.use('/api', (req, res, next) => {
 	let url = req.url;
 	let split = url.split('/');
 	let id = split[split.length-1]
-	console.log('middleware', id);
+	console.log('middleware', id, typeof(id));
 	client.exists(id, (err, reply) => {
 		if (reply === 1) {
-			console.log('Redis cached')
+			console.log('Pulling from Redis cache')
 			client.get(id, (err, reply) => {
 				if (err) {console.log(err)}
-				res.send(reply);
+				res.send(JSON.parse(reply));
 			})
 		} else {
 			next();

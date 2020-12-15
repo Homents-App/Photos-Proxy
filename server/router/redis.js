@@ -10,5 +10,6 @@ client.on('connect', function() {
   console.log('Connected to Redis!');
 });
 
+module.exports = client;
 // client.set("key", "value", redis.print);
 // client.get("key", redis.print);

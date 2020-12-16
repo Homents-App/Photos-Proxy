@@ -59,8 +59,8 @@ module.exports = {
   // Photos microservice
   service3: {
     api: ['/listings/:id', '/listings', '/addListing'],
-   // url: 'http://172.31.27.218:3001',
-    url: 'http://172.31.39.34', // IP for load balancer
+    url: 'http://172.31.27.218:3001', // service IP for testing
+    // url: 'http://172.31.39.34', // IP for load balancer
     bundle: 'bundle.js',
   },
 

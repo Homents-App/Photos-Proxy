@@ -3,9 +3,12 @@ const morgan = require('morgan');
 const path = require('path');
 const router = require('./router');
 const client = require('./router/redis.js')
+const compression = require('compression');
 
 const PUBLIC_DIR = path.resolve(__dirname, '..', 'public');
 const app = express();
+
+app.use(compression());
 
 app.use(morgan('tiny'));
 app.use(express.static(PUBLIC_DIR));

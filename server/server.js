@@ -15,28 +15,23 @@ app.get('/loaderio-05967b6037262898ba14faf165b6010e.txt', (req, res) => {
 })
 
 // Middleware to catch any IDs that are in the Redis cache
-// app.use('/api', (req, res, next) => {
-// 	let url = req.url;
-// 	let split = url.split('/');
-// 	let id = split[split.length-1]
+app.use('/api', (req, res, next) => {
+	let url = req.url;
+	let split = url.split('/');
+	let id = split[split.length-1]
 
-// 	client.exists(id, (err, reply) => {
-// 		if (reply === 1) {
-// 			console.log('Pulling from Redis cache')
-// 			client.get(id, (err, reply) => {
-// 				if (err) {console.log(err)}
-// 				res.send(JSON.parse(reply));
-// 			})
-// 		} else {
-// 			next();
-// 		}
-// 	})
-// })
-
-// app.get('/listings/:id', (req, res) => {
-// 	console.log('here')
-// 	res.sendFile(path.resolve('public', 'index.html'))
-// });
+	client.exists(id, (err, reply) => {
+		if (reply === 1) {
+			console.log('Pulling from Redis cache')
+			client.get(id, (err, reply) => {
+				if (err) {console.log(err)}
+				res.send(JSON.parse(reply));
+			})
+		} else {
+			next();
+		}
+	})
+})
 
 // Handling asset requests for webpack bundles by passing off requests to the bundles router
 app.use('/bundles', router.bundles);
